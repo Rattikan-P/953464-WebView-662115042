@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    h1 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 32px;
+      margin: 15px 0 10px 0;
+      font-weight: bold;
+    }
+    h2 {
+      color: #333;
+      font-size: 20px;
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    p {
+      line-height: 1.8;
+      color: #555;
+      margin: 10px 0;
+    }
+    .box {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .box strong {
+      color: #d84315;
+      font-size: 16px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin: 10px 0;
+      color: #555;
+      position: relative;
+    }
+    li::marker {
+      color: #667eea;
+    }
+    code {
+      background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: #667eea;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      border: 1px solid #667eea30;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #f0f0f0;
+      color: #999;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">📁 challenge 1</span>
+    <h1>Asset File Method</h1>
+    <p>This content is loaded from <code>assets/index.html</code> file</p>
+    
+    <h2>🌐 What is WebView?</h2>
+    <p>WebView lets you display web pages inside your mobile app without opening an external browser. Think of it as a mini browser built right into your app!</p>
+    
+    <div class="box">
+      <strong>✨ Key Features</strong>
+      <ul>
+        <li>Display rich HTML content with styling</li>
+        <li>Full CSS & JavaScript support</li>
+        <li>Load from local files or remote URLs</li>
+      </ul>
+    </div>
+    
+    <h2>🚀 Implementation</h2>
+    <p>Use the <code>loadFlutterAsset()</code> method to load HTML files from your assets folder. Perfect for static content!</p>
+    
+    <div class="footer">
+      Flutter WebView Tutorial
+    </div>
+  </div>
+</body>
+</html>

@@ -11,13 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter WebView',
       theme: ThemeData(
         // This is the theme of your application.
         
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter WebView'),
     );
   }
 }
@@ -38,7 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement initState
     super.initState();
     _controller = WebViewController();
-    _controller.loadRequest(Uri.parse("https://flutter.dev"));
+    // _controller.loadRequest(Uri.parse("https://flutter.dev"));
+
+    // Challenge 1: Load from asset file: 'assets/index.html'
+    _controller.loadFlutterAsset('assets/index.html');
   }
   
   @override
