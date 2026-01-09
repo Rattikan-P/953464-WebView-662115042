@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter WebView',
       theme: ThemeData(
         // This is the theme of your application.
-        
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(title: 'Flutter WebView'),
@@ -39,33 +39,33 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement initState
     super.initState();
     _controller = WebViewController()
-    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..setNavigationDelegate(
-      NavigationDelegate(
-        onPageStarted: (String url) {
-          print('Page started loading: $url');
-          setState(() {
-            isLoading = true;
-          });
-        },
-        onPageFinished: (String url) {
-          print('Page finished loading: $url');
-          setState(() {
-            isLoading = false;
-          });
-        },
-        onNavigationRequest: (request) {
-          if (request.url.startsWith('https://flutter.dev') ||
-              request.url.startsWith('https://docs.flutter.dev')) {
-            print('allowing navigation to ${request.url}');
-            return NavigationDecision.navigate;
-          }
-          print('blocking navigation to ${request.url}');
-          return NavigationDecision.prevent;
-        },
-      ),
-    )
-    ..loadRequest(Uri.parse("https://flutter.dev"));
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (String url) {
+            print('Page started loading: $url');
+            setState(() {
+              isLoading = true;
+            });
+          },
+          onPageFinished: (String url) {
+            print('Page finished loading: $url');
+            setState(() {
+              isLoading = false;
+            });
+          },
+          onNavigationRequest: (request) {
+            if (request.url.startsWith('https://flutter.dev') ||
+                request.url.startsWith('https://docs.flutter.dev')) {
+              print('allowing navigation to ${request.url}');
+              return NavigationDecision.navigate;
+            }
+            print('blocking navigation to ${request.url}');
+            return NavigationDecision.prevent;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse("https://flutter.dev"));
 
     // Challenge 1: Load from asset file: 'assets/index.html'
     // _controller.loadFlutterAsset('assets/index.html');
@@ -181,10 +181,10 @@ class _MyHomePageState extends State<MyHomePage> {
     //     <span class="badge">💻 challenge 2</span>
     //     <h1>HTML String Method</h1>
     //     <p>This content is loaded from a <code>String</code> in Dart code</p>
-        
+
     //     <h2>⚡ loadHtmlString() Method</h2>
     //     <p>This method loads HTML directly from a string variable. No separate file needed - perfect for dynamic content!</p>
-        
+
     //     <div class="box">
     //       <strong>✅ Best Use Cases</strong>
     //       <ul>
@@ -193,11 +193,11 @@ class _MyHomePageState extends State<MyHomePage> {
     //         <li>Quick prototyping & testing</li>
     //       </ul>
     //     </div>
-        
+
     //     <p style="color: #999; font-size: 14px; text-align: center; margin-top: 20px;">
     //       <em>💡 WebView supports HTML, CSS & JavaScript</em>
     //     </p>
-        
+
     //     <div class="footer">
     //       Flutter WebView Tutorial
     //     </div>
@@ -206,42 +206,49 @@ class _MyHomePageState extends State<MyHomePage> {
     // </html>
     // ''');
   }
-  
+
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text("Webview Navigation & Events"),
         actions: [
-          IconButton(icon: Icon(Icons.arrow_back), 
-          onPressed: () async {
-            if (await _controller.canGoBack()) {
-              _controller.goBack();
-            }
-          },
+          IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () async {
+              if (await _controller.canGoBack()) {
+                _controller.goBack();
+              }
+            },
           ),
-          IconButton(icon: Icon(Icons.arrow_forward), 
-          onPressed: () async {
-            if (await _controller.canGoForward()) {
-              _controller.goForward();
-            }
-          },
+          IconButton(
+            icon: Icon(Icons.arrow_forward),
+            onPressed: () async {
+              if (await _controller.canGoForward()) {
+                _controller.goForward();
+              }
+            },
           ),
-          IconButton(icon: Icon(Icons.refresh), 
-          onPressed: () async {
-            _controller.reload();
-          },
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () async {
+              _controller.reload();
+            },
           ),
         ],
       ),
       body: Stack(
         children: [
           WebViewWidget(controller: _controller),
-          isLoading ? Center(
-            child: CircularProgressIndicator(color: Colors.deepPurple,),
-          ) : SizedBox.shrink(),
+          isLoading
+              ? Container(
+                  color: Colors.black.withOpacity(0.3),
+                  child: Center(
+                    child: CircularProgressIndicator(color: Colors.deepPurple),
+                  ),
+                )
+              : SizedBox.shrink(),
         ],
       ),
     );
